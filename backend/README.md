@@ -51,6 +51,7 @@ $ yarn dev
 - [Express](https://expressjs.com/)
 - [Sqlite](https://www.sqlite.org/index.html)
 - [TypeORM](https://typeorm.io#/)
+- [Multer](https://www.npmjs.com/package/multer)
 
 ### 🚀 Endpoints:
 
