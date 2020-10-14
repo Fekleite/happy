@@ -1,7 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class createOrphanages1602629821192 implements MigrationInterface {
-
   public async up(queryRunner: QueryRunner): Promise<void> {
     //Realizar alterações
     await queryRunner.createTable(new Table({
@@ -56,5 +55,4 @@ export class createOrphanages1602629821192 implements MigrationInterface {
     //Desfazer as alterações feitas no método up
     await queryRunner.dropTable('orphanages');
   }
-
 }
