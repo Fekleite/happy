@@ -8,6 +8,8 @@ import "../../styles/pages/orphanages-map.css"
 import mapMarkerImg from "../../assets/map-marker.svg";
 import mapIcon from '../../utils/mapIcon';
 
+import api from "../../services/api";
+
 const OrphanagesMap: React.FC = () => {
   return (
     <div id="page-map">
