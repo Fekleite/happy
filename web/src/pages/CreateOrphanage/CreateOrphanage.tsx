@@ -1,18 +1,22 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Map, Marker, TileLayer } from 'react-leaflet';
-import { FiPlus, FiX } from "react-icons/fi";
+import { FiPlus, FiX, FiInfo } from "react-icons/fi";
 import { LeafletMouseEvent } from "leaflet";
 import { useHistory } from "react-router-dom";
 
 import '../../styles/pages/create-orphanage.css';
 
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Tooltip from "../../components/Tooltip/Tolltip";
+
 import mapIcon from "../../utils/mapIcon";
 import api from "../../services/api";
 
 
 const CreateOrphanage: React.FC = () =>{
   const history = useHistory();
+
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const [position, setPosition] = useState({latitude: 0, longitude: 0});
   const [name, setName] = useState("");
@@ -36,13 +40,21 @@ const CreateOrphanage: React.FC = () =>{
     if(!e.target.files) return;
 
     const selectedImages = Array.from(e.target.files)
-    setImages(selectedImages);
+    setImages([...images, ...selectedImages]);
 
     const selectedImagesPreview = selectedImages.map(image => {
       return URL.createObjectURL(image)
     })
 
-    setPreviewImages(selectedImagesPreview);
+    setPreviewImages([...previewImages, ...selectedImagesPreview]);
+  }
+
+  function handleRemoveImages(imgIndex: number) {
+    const removedImages = images.filter((image, index) => index !== imgIndex);
+    setImages(removedImages);
+
+    const removedPreviewImages = previewImages.filter((image, index) => index !== imgIndex);
+    setPreviewImages(removedPreviewImages);
   }
 
   async function handleSubmit(e: FormEvent){
@@ -63,11 +75,15 @@ const CreateOrphanage: React.FC = () =>{
       data.append('images', image);
     });
     
-    await api.post("orphanages", data);
-
-    // fazer um tooltip
-    alert("Cadastro realizado com sucesso!");
-    history.push('/app');
+    const result = await api.post("orphanages", data);
+    
+    if(result.status === 201) {
+      setShowTooltip(true);
+      setTimeout(() => {
+        setShowTooltip(false)
+        history.push('/app');
+      }, 3000)
+    }
   }
 
   return (
@@ -75,6 +91,12 @@ const CreateOrphanage: React.FC = () =>{
       <Sidebar />
 
       <main>
+        {showTooltip && (
+          <Tooltip id="success" message="Cadastro realizado com sucesso!">
+            <FiInfo size={24} color="#39CC83" />
+          </Tooltip>
+        )}
+
         <form className="create-orphanage-form" onSubmit={handleSubmit}>
           <fieldset>
             <legend>Dados</legend>
@@ -108,11 +130,11 @@ const CreateOrphanage: React.FC = () =>{
               <label htmlFor="images">Fotos</label>
 
               <div className="images-container">
-                {previewImages.map(image => {
+                {previewImages.map((image, index) => {
                   return (
                     <div className="image-content">
                       <img src={image} alt={name}/>
-                      <span>
+                      <span onClick={() => handleRemoveImages(index)}>
                         <FiX size={24} color="#FF669D"/>
                       </span>
                     </div>

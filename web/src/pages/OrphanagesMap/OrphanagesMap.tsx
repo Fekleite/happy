@@ -26,8 +26,6 @@ const OrphanagesMap: React.FC = () => {
     })
   }, []);
 
-  console.log(orphanages)
-
   return (
     <div id="page-map">
       <aside>

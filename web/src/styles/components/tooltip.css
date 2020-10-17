@@ -1,0 +1,36 @@
+div.container-tooltip {
+  max-width: 200px;
+  background-color: #fff;
+  border-radius: 20px;
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  animation: fade 2s;
+}
+
+div.container-tooltip span {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+#success {
+  background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
+  color: #37c77f;
+}
+
+#error {
+  background: linear-gradient(154.16deg, #fcf0f4 7.85%, #ffffff 91.03%);
+  color: #ff669d;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
