@@ -8,7 +8,7 @@
 
 <p align="center" style="font-size: 24px">"Uma semana para acelerar sua evolução como dev e avançar para o próximo nível"</p>
 
-<div align="center"  > <img src="https://user-images.githubusercontent.com/48728541/95793825-d3b26180-0cbc-11eb-9684-285a83e7374f.png" /> </div>
+<div align="center"  > <img src="https://user-images.githubusercontent.com/48728541/95793070-268b1980-0cbb-11eb-9524-d52889ddcb89.png" /> </div>
 
 <p align="center" style="font-size: 24px">Com o Happy você pode encontrar orfanatos perto de você e fazer uma criança feliz.</p>
 
