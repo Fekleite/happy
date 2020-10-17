@@ -2,10 +2,7 @@
 
 ### 🎨 Aplicação:
 
-![2020-10-12 18 44 55 localhost 144125df0b38](https://user-images.githubusercontent.com/48728541/95793070-268b1980-0cbb-11eb-9524-d52889ddcb89.png)
-
-![2020-10-12 18 45 13 localhost be960aef0975](https://user-images.githubusercontent.com/48728541/95793094-373b8f80-0cbb-11eb-8641-794ca80a5b84.png)
-
+<img src="https://user-images.githubusercontent.com/48728541/95793825-d3b26180-0cbc-11eb-9684-285a83e7374f.png" />
 
 ### ⚙️ Pré-requisitos
 
